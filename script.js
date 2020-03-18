@@ -22,3 +22,34 @@
 // should be alphanumeric in nature
 // password must contain atleast one Uppercase, one number and special characters[!@#$%^&*()_]
 // return true else return false
+var button = document.getElementById('submit');
+button.addEventListener('click',()=>{
+    var password = document.getElementById('passwordtext').value;
+    var name = document.getElementById('usertext').value;
+    var email = document.getElementById('emailtext').value;
+    var usernamevalid = /^[a-zA-Z0-9]+$/;
+    if(name===''&&password===''&&email===''){
+        alert("Please fill all fields");
+        return false;
+    }
+    if (!usernamevalid.test(name))
+     {
+        alert("Invalid User Name");
+        return false;
+    }
+    var emailvalid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!emailvalid.test(email))
+     {
+        alert("Invalid E-mail Id");
+        return false;
+    }
+    var passwordvalid = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if (!passwordvalid.test(password))
+     {
+        alert("Try by another password");
+        return false;
+    }
+    alert("Registration successfull");
+
+    return true;    
+});
